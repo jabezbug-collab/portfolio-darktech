@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAVID JABEZ.M | THE E-COM ARCHITECT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #050505;
+            --dark-grey: #111111;
+            --cobalt: #3B82F6;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.03em;
+        }
+        .accent-glow {
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        .section-gap {
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+        .hero-text {
+            font-size: clamp(3rem, 10vw, 7rem);
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, #fff, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.3));
+        }
+        .btn-tech {
+            border: 1px solid var(--cobalt);
+            color: #fff;
+            padding: 16px 32px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            display: inline-block;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            background: rgba(59, 130, 246, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+        }
+        .btn-tech:hover {
+            background: var(--cobalt);
+            border-color: var(--cobalt);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+            transform: translateY(-3px) scale(1.05);
+        }
+        .tech-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .work-card {
+            background: var(--dark-grey);
+            border: 1px solid #222;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .work-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: all 0.6s ease;
+        }
+        .work-card:hover::before {
+            transform: translateX(100%);
+        }
+        .work-card:hover {
+            border-color: var(--cobalt);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        .stat-number {
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 900;
+            font-family: 'Space Grotesk';
+            color: var(--cobalt);
+        }
+        .cursor-follower {
+            width: 20px;
+            height: 20px;
+            background: var(--cobalt);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            filter: blur(4px);
+            mix-blend-mode: screen;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="cursor-follower" id="cursor"></div>
+
+    <nav class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center">
+        <div class="font-medium text-sm tracking-widest uppercase opacity-80">David Jabez.M</div>
+        <div class="flex gap-6 text-xs font-semibold uppercase tracking-widest opacity-60">
+            <a href="#work" class="hover:opacity-100 transition-opacity">Portfolio</a>
+            <a href="#about" class="hover:opacity-100 transition-opacity">About</a>
+            <a href="mailto:jabeztechw@gmail.com" class="text-cobalt hover:text-white transition-colors">Hire Me</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="min-h-screen px-8 flex flex-col justify-center relative">
+            <div class="tech-grid"></div>
+            <div class="absolute top-1/4 -right-20 opacity-5 pointer-events-none select-none rotate-12">
+                <h2 class="text-[30rem] font-black leading-none">CORE</h2>
+            </div>
+            <div class="max-w-5xl z-10">
+                <h1 class="hero-text font-bold mb-8">
+                    DIGITAL <span class="text-cobalt">STOREFRONTS</span><br>RE-ENGINEERED.
+                </h1>
+                <p class="text-xl md:text-2xl max-w-2xl opacity-60 font-light leading-relaxed mb-12">
+                    High-performance e-commerce architecture. I turn complex product catalogs into seamless, high-conversion shopping experiences.
+                </p>
+                <a href="mailto:jabeztechw@gmail.com" class="btn-tech px-12 py-6">
+                    Initiate Project
+                </a>
+            </div>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="section-gap px-8 grid grid-cols-1 md:grid-cols-3 gap-12 border-y border-zinc-800 bg-zinc-900/30">
+            <div class="flex flex-col items-center text-center group">
+                <div class="stat-number" data-value="98">0</div>
+                <p class="text-sm font-bold uppercase tracking-widest opacity-40 mt-4">Client Satisfaction %</p>
+            </div>
+            <div class="flex flex-col items-center text-center group">
+                <div class="stat-number" data-value="150">0</div>
+                <p class="text-sm font-bold uppercase tracking-widest opacity-40 mt-4">Store Deployments</p>
+            </div>
+            <div class="flex flex-col items-center text-center group">
+                <div class="stat-number" data-value="22">0</div>
+                <p class="text-sm font-bold uppercase tracking-widest opacity-40 mt-4">Avg. Conv. Lift %</p>
+            </div>
+        </section>
+
+        <!-- WORK SECTION -->
+        <section id="work" class="section-gap px-8">
+            <div class="flex justify-between items-end mb-24">
+                <h2 class="text-5xl md:text-7xl font-bold tracking-tighter">CASE <span class="text-cobalt">STUDIES</span></h2>
+                <span class="text-xs opacity-40 uppercase tracking-widest mb-4">Selected Archive 2023 — 2026</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="work-card p-10 group cursor-pointer">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] text-cobalt font-bold uppercase tracking-widest">Case 01</span>
+                        <span class="text-xs opacity-40">2025</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 group-hover:translate-x-2 transition-transform">SMART NURSE</h3>
+                    <p class="opacity-60 font-light mb-12">Healthcare e-commerce optimization. Streamlining medical supply procurement for professionals.</p>
+                    <a href="https://smartnursev11.pages.dev/" target="_blank" class="text-xs font-bold uppercase tracking-widest text-cobalt hover:text-white transition-colors">Explore Case $\rightarrow$</a>
+                </div>
+                <div class="work-card p-10 group cursor-pointer">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] text-cobalt font-bold uppercase tracking-widest">Case 02</span>
+                        <span class="text-xs opacity-40">2024</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 group-hover:translate-x-2 transition-transform">JABEZ TEAMS</h3>
+                    <p class="opacity-60 font-light mb-12">Team management portal for digital agencies. Focused on high-efficiency task tracking.</p>
+                    <a href="https://jabezteams.pages.dev/" target="_blank" class="text-xs font-bold uppercase tracking-widest text-cobalt hover:text-white transition-colors">Explore Case $\rightarrow$</a>
+                </div>
+                <div class="work-card p-10 group cursor-pointer">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] text-cobalt font-bold uppercase tracking-widest">Case 03</span>
+                        <span class="text-xs opacity-40">2024</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 group-hover:translate-x-2 transition-transform">HAPPY FATHER</h3>
+                    <p class="opacity-60 font-light mb-12">Niche gift e-commerce site. Optimized for emotional triggers and fast checkout.</p>
+                    <a href="https://happyfather.pages.dev/" target="_blank" class="text-xs font-bold uppercase tracking-widest text-cobalt hover:text-white transition-colors">Explore Case $\rightarrow$</a>
+                </div>
+                <div class="work-card p-10 group cursor-pointer">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] text-cobalt font-bold uppercase tracking-widest">Case 04</span>
+                        <span class="text-xs opacity-40">2023</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 group-hover:translate-x-2 transition-transform">HAPPY MOTHER ANNIE</h3>
+                    <p class="opacity-60 font-light mb-12">Bespoke floral and gift shop. Implemented personalized gift-wrapping UX flow.</p>
+                    <a href="https://happymotherannie.pages.dev/" target="_blank" class="text-xs font-bold uppercase tracking-widest text-cobalt hover:text-white transition-colors">Explore Case $\rightarrow$</a>
+                </div>
+                <div class="work-card p-10 group cursor-pointer">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] text-cobalt font-bold uppercase tracking-widest">Case 05</span>
+                        <span class="text-xs opacity-40">2023</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 group-hover:translate-x-2 transition-transform">DHANVANTRI</h3>
+                    <p class="opacity-60 font-light mb-12">Ayurvedic health store. Balanced traditional values with modern e-com conversion patterns.</p>
+                    <a href="https://dhanvantri1.pages.dev/" target="_blank" class="text-xs font-bold uppercase tracking-widest text-cobalt hover:text-white transition-colors">Explore Case $\rightarrow$</a>
+                </div>
+                <div class="work-card p-10 group cursor-pointer">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] text-cobalt font-bold uppercase tracking-widest">Case 06</span>
+                        <span class="text-xs opacity-40">2023</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 group-hover:translate-x-2 transition-transform">DHANVANTRI LANDING</h3>
+                    <p class="opacity-60 font-light mb-12">High-converting landing page for specific Ayurvedic product launches.</p>
+                    <a href="https://dhanvantri-landingpage.pages.dev/" target="_blank" class="text-xs font-bold uppercase tracking-widest text-cobalt hover:text-white transition-colors">Explore Case $\rightarrow$</a>
+                </div>
+                <div class="work-card p-10 group cursor-pointer">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] text-cobalt font-bold uppercase tracking-widest">Case 07</span>
+                        <span class="text-xs opacity-40">2023</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 group-hover:translate-x-2 transition-transform">JABEZ PORTFOLIO</h3>
+                    <p class="opacity-60 font-light mb-12">Personal showcase of architectural design and frontend engineering capabilities.</p>
+                    <a href="https://portfoliodavidjabez.pages.dev/" target="_blank" class="text-xs font-bold uppercase tracking-widest text-cobalt hover:text-white transition-colors">Explore Case $\rightarrow$</a>
+                </div>
+                <div class="work-card p-10 group cursor-pointer">
+                    <div class="flex justify-between items-start mb-8">
+                        <span class="text-[10px] text-cobalt font-bold uppercase tracking-widest">Case 08</span>
+                        <span class="text-xs opacity-40">2023</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 group-hover:translate-x-2 transition-transform">B-DAY APPA</h3>
+                    <p class="opacity-60 font-light mb-12">Custom interactive digital birthday experience with complex animations.</p>
+                    <a href="https://happybirthdayappa.pages.dev/" target="_blank" class="text-xs font-bold uppercase tracking-widest text-cobalt hover:text-white transition-colors">Explore Case $\rightarrow$</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section-gap px-8 bg-zinc-900/50">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center max-w-6xl mx-auto">
+                <div class="relative order-2 md:order-1">
+                    <div class="aspect-square bg-black border border-zinc-800 flex items-center justify-center text-center p-12 relative z-10">
+                        <p class="text-3xl font-bold leading-tight opacity-80">
+                            "Conversion is the only metric that truly matters in design."
+                        </p>
+                    </div>
+                    <div class="absolute -top-6 -left-6 bg-cobalt text-white p-4 font-bold uppercase text-xs tracking-widest z-20">
+                        Since 2023
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-6xl font-bold mb-8 tracking-tighter">THE <span class="text-cobalt">ARCHITECT</span></h2>
+                    <p class="text-xl opacity-70 font-light leading-relaxed mb-12">
+                        I don't just design websites; I engineer digital revenue streams. I combine high-end aesthetics with rigorous conversion data.
+                    </p>
+                    <div class="grid grid-cols-2 gap-12">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-cobalt mb-4">Core Stack</h4>
+                            <ul class="text-sm font-medium space-y-2 opacity-60">
+                                <li>React / Next.js</li>
+                                <li>Tailwind CSS</li>
+                                <li>Shopify Plus</li>
+                                <li>Figma / Webflow</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-cobalt mb-4">Expertise</h4>
+                            <ul class="text-sm font-medium space-y-2 opacity-60">
+                                <li>CRO Audit</li>
+                                <li>UX Strategy</li>
+                                <li>Visual Identity</li>
+                                <li>SaaS E-com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="section-gap px-8 text-center relative overflow-hidden bg-black">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none flex items-center justify-center">
+                <h2 class="text-[30rem] font-black leading-none italic text-zinc-800">SCALE</h2>
+            </div>
+            <h2 class="text-7xl md:text-9xl font-bold mb-12 relative z-10 tracking-tighter">READY TO <span class="text-cobalt">SCALE?</span></h2>
+            <a href="mailto:jabeztechw@gmail.com" class="btn-tech px-16 py-8 text-lg relative z-10">
+                Contact David Now
+            </a>
+        </section>
+    </main>
+
+    <footer class="px-8 py-24 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-12 opacity-60 text-xs uppercase tracking-widest">
+        <div class="font-bold text-lg tracking-tighter">David Jabez.M &copy; 2026</div>
+        <div class="flex gap-8">
+            <a href="mailto:jabeztechw@gmail.com" class="hover:text-cobalt transition-colors">Email</a>
+            <a href="https://www.instagram.com/webmakers123" target="_blank" class="hover:text-cobalt transition-colors">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX - 10,
+                y: e.clientY - 10,
+                duration: 0.2
+            });
+        });
+
+        // Hero animations
+        gsap.from("h1", {
+            opacity: 0,
+            y: 50,
+            duration: 1.2,
+            ease: "expo.out",
+            delay: 0.2
+        });
+
+        // Stats counter
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-value');
+            ScrollTrigger.create({
+                trigger: counter,
+                onEnter: () => {
+                    let count = 0;
+                    const interval = setInterval(() => {
+                        count++;
+                        counter.innerText = count;
+                        if (count === target) clearInterval(interval);
+                    }, 20);
+                }
+            });
+        });
+
+        // Work items stagger
+        gsap.from(".work-card", {
+            opacity: 0,
+            y: 60,
+            stagger: 0.15,
+            duration: 1,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: "#work",
+                start: "top 95%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        // About section fade
+        gsap gsap.from("#about", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 80%",
+            }
+        });
+    </script>
+</body>
+</html>
